@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../js/vue.js"></script>
+    <title>document</title>
+</head>
+
+<body>
+    <!-- 准备一个容器 -->
+    <div id="root">
+        <h2>当前的年龄是{{age}}</h2>
+        <button @click="age++">age++</button>
+
+        <!-- 使用v-show做条件渲染 -->
+        <!-- <h2 v-show="false">欢迎来到{{school}}</h2> -->
+        <!-- <h2 v-show="1 === 1">欢迎来到{{school}}</h2> -->
+
+        <!-- 使用v-if做条件渲染 -->
+        <!-- <h2 v-if="false">欢迎来到{{school}}</h2> -->
+        <!-- <h2 v-if="1 === 1">欢迎来到{{school}}</h2> -->
+
+        <!-- v-else和v-else-if -->
+        <div v-if="age === 19">Angular</div>
+        <div v-else-if="age === 20">React</div>
+        <div v-else-if="age === 21">Vue</div>
+        <div v-else>jQuery</div>
+
+        <!-- v-if与template使用 -->
+        <template v-if="age > 18">
+            <h3>你好</h3>
+            <h3>ljj</h3>
+            <h3>gz</h3>
+        </template>
+    </div>
+</body>
+<script>
+    Vue.config.productionTip = false //关闭vue 在启动时生成生产提示
+    const vm = new Vue({
+        el: '#root',
+        data: {
+            age: 18,
+            school: '尚硅谷'
+        }
+    })
+</script>
+
+</html>
