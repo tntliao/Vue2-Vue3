@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../js/vue.js"></script>
+    <title>document</title>
+</head>
+
+<body>
+    <!-- 准备一个容器 -->
+    <div id="root">
+        <button @click="updateZDY">更改周冬雨信息</button>
+        <ul>
+            <li v-for="item in persons" :key="item.id">
+                {{item.name}}--{{item.age}}
+                <input type="text">
+            </li>
+        </ul>
+
+    </div>
+</body>
+<script>
+    Vue.config.productionTip = false //关闭vue 在启动时生成生产提示
+    new Vue({
+        el: '#root',
+        data: {
+            persons: [
+                { id: '001', name: '马冬梅', age: 39, sex: '女' },
+                { id: '002', name: '周冬雨', age: 25, sex: '女' },
+                { id: '003', name: '周杰伦', age: 41, sex: '男' },
+                { id: '004', name: '温兆伦', age: 18, sex: '男' }
+            ],
+        },
+        methods: {
+            updateZDY() {
+                // 会被vue发现
+                this.persons[1].name = '玉玉了';
+                this.persons[1].age = 18;
+
+                // 数据已经修改，但是vue没有发现
+                // this.persons[1] = { id: '002', name: '玉玉了', age: 18, sex: '女' }
+            }
+        },
+    })
+</script>
+
+</html>

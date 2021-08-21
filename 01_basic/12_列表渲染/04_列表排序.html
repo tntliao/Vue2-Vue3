@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../js/vue.js"></script>
+    <title>document</title>
+</head>
+
+<body>
+    <!-- 准备一个容器 -->
+    <div id="root">
+        <input type="text" v-model="keyWord">
+        <button @click="sortType = 2">升序</button>
+        <button @click="sortType = 1">降序</button>
+        <button @click="sortType = 0">默认</button>
+        <ul>
+            <li v-for="item in filters" :key="item.id">
+                {{item.name}}--{{item.age}}
+                <input type="text">
+            </li>
+        </ul>
+
+    </div>
+</body>
+<script>
+    Vue.config.productionTip = false //关闭vue 在启动时生成生产提示
+    new Vue({
+        el: '#root',
+        data: {
+            keyWord: '',
+            sortType: '',
+            persons: [
+                { id: '001', name: '马冬梅', age: 39, sex: '女' },
+                { id: '002', name: '周冬雨', age: 25, sex: '女' },
+                { id: '003', name: '周杰伦', age: 41, sex: '男' },
+                { id: '004', name: '温兆伦', age: 18, sex: '男' }
+            ],
+        },
+        computed: {
+            filters() {
+                const newArr = this.persons.filter(item => {
+                    return item.name.indexOf(this.keyWord) !== -1;
+                });
+                if (this.sortType) {
+                    newArr.sort((p1, p2) => {
+                        return this.sortType === 2 ? p1.age - p2.age : p2.age - p1.age
+                    })
+                }
+                return newArr;
+            }
+        }
+    })
+</script>
+
+</html>

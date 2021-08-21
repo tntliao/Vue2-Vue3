@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../js/vue.js"></script>
+    <title>document</title>
+</head>
+
+<body>
+    <!-- 
+        Vue.set()
+        this.$set() || vm.$set()
+        不能在根数据上添加
+     -->
+    <!-- 准备一个容器 -->
+    <div id="root">
+        <h1>学校信息</h1>
+        <button @click="addLeader">添加校长信息</button>
+        <h2>学校名称:{{school.name}}</h2>
+        <h2>学校地址:{{school.address}}</h2>
+        <h2>校长是：{{school.leader}}</h2>
+    </div>
+</body>
+<script>
+    Vue.config.productionTip = false //关闭vue 在启动时生成生产提示
+    const vm = new Vue({
+        el: '#root',
+        data: {
+            school: {
+                name: '尚硅谷',
+                address: '北京'
+            }
+        },
+        methods: {
+            addLeader() {
+                // Vue.set(this.school, 'leader', 'oiijoin1');
+                // vm.$set(this.school, 'leader', 'oiijoin2');
+                // this.$set(this.school, 'leader', 'oiijoin3');
+            }
+        },
+    })
+</script>
+
+</html>

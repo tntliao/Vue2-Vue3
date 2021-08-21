@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../js/vue.js"></script>
+    <title>document</title>
+</head>
+
+<body>
+    <!-- 
+        Vue中使用能被发现的数组方法
+            1.push    向数组最后添加一个数据
+            2.pop     删除数组最后一个数据
+            3.shift   删除数组的第一个数据
+            4.unshift 向数组最前方添加一个或多个数据
+            5.splice  替换或删除数据
+            6.sort    排序
+            7.reverse 颠倒数据的排序 
+     -->
+    
+    <!-- 准备一个容器 -->
+    <div id="root">
+        <h1>欢迎来到{{school}}</h1>
+        <button @click="updateP">更改下标0的数据</button>
+        <ul>
+            <li v-for="p in personsArr">
+                {{p.name}}
+            </li>
+        </ul>
+    </div>
+</body>
+<script>
+    Vue.config.productionTip = false //关闭vue 在启动时生成生产提示
+    const vm = new Vue({
+        el: '#root',
+        data: {
+            school: '尚硅谷',
+            personsArr: [
+                { name: 'jj', age: 18 },
+                { name: 'ii', age: 20 },
+                { name: 'll', age: 28 }
+            ]
+        },
+        methods: {
+            updateP() {
+                this.personsArr.splice(0, 1, { name: 'liaojj', age: 18 })
+            }
+        },
+    })
+</script>
+
+</html>
