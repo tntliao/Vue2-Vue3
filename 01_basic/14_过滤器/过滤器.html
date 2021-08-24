@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcdn.net/ajax/libs/dayjs/1.10.6/dayjs.min.js"></script>
+    <script src="../js/vue.js"></script>
+    <title>document</title>
+</head>
+
+<body>
+    <!-- 准备一个容器 -->
+    <div id="root">
+        <h2>显示格式化后的时间</h2>
+        <!-- 计算属性实现 -->
+        <h3>现在的时间是:{{computedTime}}</h3>
+        <!-- methods实现 -->
+        <h3>现在的时间是:{{getCurrentTime()}}</h3>
+        <!-- 过滤器实现 -->
+        <h3>现在的时间是:{{currentTime | timeFormater}}</h3>
+        <!-- 过滤器传递参数 -->
+        <h3>现在的时间是:{{currentTime | timeFormater('YYYY-MM-DD')}}</h3>
+    </div>
+</body>
+<script>
+    Vue.config.productionTip = false //关闭vue 在启动时生成生产提示
+    Vue.filter('myFilter', function (val, rule) {
+        console.log(val, rule);
+    })
+    const vm = new Vue({
+        el: '#root',
+        data: {
+            currentTime: Date.now() * 1.25
+        },
+        computed: {
+            computedTime() {
+                return dayjs(this.currentTime).format('YYYY-MM-DD HH:mm:ss')
+            }
+        },
+        methods: {
+            getCurrentTime() {
+                return dayjs(this.currentTime).format('YYYY-MM-DD HH:mm:ss')
+            }
+        },
+        //局部过滤器
+        filters: {
+            timeFormater(val, rule = 'YYYY-MM-DD HH:mm:ss') {
+                return dayjs(val).format(rule)
+            }
+        }
+    })
+</script>
+
+</html>

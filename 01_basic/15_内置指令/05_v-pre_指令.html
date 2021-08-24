@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../js/vue.js"></script>
+    <title>document</title>
+</head>
+
+<body>
+    <!-- 
+        v-pre指令：
+            1.跳过其所在节点编译过程
+            2.可利用它跳过：没有使用指令语法，没有使用插值的节点，会加快编译
+     -->
+
+    <!-- 准备一个容器 -->
+    <div id="root">
+        <h2 v-pre>{{school}}yes</h2>
+        <h2>{{school}}yes</h2>
+    </div>
+</body>
+<script>
+    Vue.config.productionTip = false //关闭vue 在启动时生成生产提示
+    const vm = new Vue({
+        el: '#root',
+        data: {
+            school: '尚硅谷'
+        }
+    })
+</script>
+
+</html>
