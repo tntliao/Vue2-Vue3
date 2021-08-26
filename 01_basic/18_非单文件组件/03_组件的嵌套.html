@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../js/vue.js"></script>
+    <title>组件的嵌套</title>
+</head>
+
+<body>
+    <!-- 准备一个容器 -->
+    <div id="root">
+        <app />
+    </div>
+</body>
+<script>
+    Vue.config.productionTip = false //关闭vue 在启动时生成生产提示
+
+    const student = Vue.extend({
+        template: `
+            <div>
+                <h3>{{name}}</h3>
+                <h3>{{age}}</h3>
+            </div>
+        `,
+        data() {
+            return {
+                name: 'ljj',
+                age: 18
+            }
+        }
+    })
+
+    const school = Vue.extend({
+        template: `
+            <div>
+                <h2>{{school}}</h2>
+                <h2>{{address}}</h2>
+                <student></student>
+            </div>
+        `,
+        data() {
+            return {
+                school: '尚硅谷',
+                address: 18
+            }
+        },
+        components: {
+            student
+        }
+    })
+
+    const hello = Vue.extend({
+        template: `
+            <div>
+                <h1>{{welcome}}</h1>
+            </div>
+        `,
+        data() {
+            return {
+                welcome: 'welcome_ljj'
+            }
+        }
+    })
+
+    const app = Vue.extend({
+        template: `
+            <div>
+                <school></school>
+                <hello></hello>
+            </div>
+        `,
+        components: {
+            school,
+            hello
+        }
+    })
+
+    new Vue({
+        el: '#root',
+        components: {
+            app
+        }
+    })
+</script>
+
+</html>
