@@ -1,9 +1,11 @@
 import Vue from 'vue';
 import App from './App.vue';
-import pubgin from './pubgin';
+import { person, showTitle } from './utils/mixin'
 
+//全局混入
+Vue.mixin(person);
+Vue.mixin(showTitle);
 
-Vue.use(pubgin);
 new Vue({
     render: h => h(App)
 }).$mount('#app');
