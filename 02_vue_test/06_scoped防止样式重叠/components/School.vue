@@ -1,5 +1,7 @@
 <template>
-  <h2 @click="showSchool(school)">{{ school }}</h2>
+  <div>
+    <h2>{{ school }}</h2>
+  </div>
 </template>
 
 <script>
@@ -9,12 +11,11 @@ export default {
       school: "尚硅谷",
     };
   },
-  props: ["showSchool"],
 };
 </script>
+
 <style scoped>
 h2 {
-  padding: 40px;
-  background-color: rosybrown;
+  color: rgb(255, 0, 85);
 }
 </style>
