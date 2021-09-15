@@ -7,7 +7,9 @@ Vue.config.productionTip = false;
 
 Vue.use(VueRouter)
 
-new Vue({
+const vm = new Vue({
     render: h => h(App),
     router
 }).$mount('#app');
+
+console.log(vm);

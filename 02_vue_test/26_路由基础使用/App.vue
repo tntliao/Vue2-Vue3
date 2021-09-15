@@ -2,21 +2,23 @@
   <div>
     <div class="row">
       <div class="col-xs-offset-2 col-xs-8">
-        <Banner />
+        <div class="page-header"><h2>Vue Router Demo</h2></div>
       </div>
     </div>
     <div class="row">
       <div class="col-xs-2 col-xs-offset-2">
         <div class="list-group">
-          <router-link class="list-group-item" active-class="active" to="/home">
-            Home
-          </router-link>
+          <!--   <a class="list-group-item active" href="./about.html">About</a>
+          <a class="list-group-item" href="./home.html">Home</a> -->
           <router-link
             class="list-group-item"
             active-class="active"
             to="/about"
           >
             About
+          </router-link>
+          <router-link class="list-group-item" active-class="active" to="/home">
+            Home
           </router-link>
         </div>
       </div>
@@ -33,11 +35,7 @@
 </template>
 
 <script>
-import Banner from "./components/Banner.vue";
-export default {
-  name: "App",
-  components: { Banner },
-};
+export default {};
 </script>
 
 <style>
