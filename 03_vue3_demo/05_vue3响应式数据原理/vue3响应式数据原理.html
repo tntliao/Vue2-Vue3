@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const perosn = {
+            name: 'ljj',
+            age: 18
+        };
+
+        const p = new Proxy(perosn, {
+            // 获取数据
+            get(target, propName) {
+                console.log('p的某个属性被读取', target, propName);
+                return target[propName];
+            },
+            // 修改 或 添加
+            set(target, propName, value) {
+                console.log('p的某个属性被修改', target, propName, value);
+                target[propName] = value;
+            },
+            // 删除
+            defineProperty(target, propName) {
+                console.log('p的某个属性被删除', target, propName);
+                return delete target[propName]
+            }
+        });
+
+        console.log(p);
+    </script>
+</body>
+
+</html>

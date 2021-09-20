@@ -30,14 +30,6 @@
 <script>
 export default {
   name: "About",
-  beforeRouteEnter(to, from, next) {
-    console.log(to, from);
-    next();
-  },
-  beforeRouteLeave(to, from, next) {
-    console.log(to, from);
-    next();
-  },
 };
 </script>
 

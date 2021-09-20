@@ -6,7 +6,6 @@ import Message from '../pages/Message';
 import Detail from '../pages/Detail';
 
 const router = new VueRouter({
-    mode: 'history',
     routes: [
         {
             name: 'zhuye',
@@ -24,18 +23,7 @@ const router = new VueRouter({
                     name: 'xinwen',
                     path: 'news',
                     component: News,
-                    meta: { isAuth: true, title: '新闻' },
-                    beforeEnter: (to, from, next) => {
-                        if (to.meta.isAuth) {
-                            if (localStorage.getItem('school') === 'atguigu') {
-                                next()
-                            } else {
-                                alert('学校名不是atguigu')
-                            }
-                        } else {
-                            next()
-                        }
-                    }
+                    meta: { isAuth: true, title: '新闻' }
                 },
                 {
                     name: 'xiaoxi',
@@ -63,7 +51,7 @@ const router = new VueRouter({
 })
 
 // 前置路由守卫，页面切换前调用
-/* router.beforeEach((to, from, next) => {
+router.beforeEach((to, from, next) => {
     if (to.meta.isAuth) {
         if (localStorage.getItem('school') === 'atguigu') {
             next()
@@ -73,7 +61,7 @@ const router = new VueRouter({
     } else {
         next()
     }
-}) */
+})
 
 
 router.afterEach((to) => {

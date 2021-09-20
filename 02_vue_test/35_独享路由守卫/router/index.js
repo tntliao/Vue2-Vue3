@@ -6,7 +6,6 @@ import Message from '../pages/Message';
 import Detail from '../pages/Detail';
 
 const router = new VueRouter({
-    mode: 'history',
     routes: [
         {
             name: 'zhuye',
